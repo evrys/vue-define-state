@@ -1,30 +1,66 @@
+<!--
+From https://vuejs.org/examples/#markdown
+A simple markdown editor.
+-->
+
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import { marked } from 'marked'
+import { debounce } from 'lodash-es'
+import { defineState } from '../lib/defineState'
+
+const state = defineState({
+  input: '# hello',
+
+  get output() {
+    return marked(this.input)
+  },
+
+  update(e: Event) {
+    state.input = (e.target as HTMLInputElement).value
+  }
+})
+
+state.update = debounce(state.update, 100)
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="editor">
+    <textarea class="input" :value="state.input" @input="state.update"></textarea>
+    <div class="output" v-html="state.output"></div>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<style>
+body {
+  margin: 0;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+.editor {
+  height: 100vh;
+  display: flex;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+.input,
+.output {
+  overflow: auto;
+  width: 50%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+
+.input {
+  border: none;
+  border-right: 1px solid #ccc;
+  resize: none;
+  outline: none;
+  background-color: #f6f6f6;
+  font-size: 14px;
+  font-family: 'Monaco', courier, monospace;
+  padding: 20px;
+}
+
+code {
+  color: #f66;
 }
 </style>

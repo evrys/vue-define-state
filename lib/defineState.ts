@@ -1,7 +1,8 @@
 import { computed, reactive } from "vue"
 
 /**
- * A convenience wrapper for Vue's `reactive()`. Creates a reactive copy of the original object, and also:
+ * A convenient wrapper for Vue's `reactive()`. 
+ * Creates a reactive copy of the original object, and also:
  *
  * - Makes all getters into computed values
  * - Binds "this" for all non-getter functions
