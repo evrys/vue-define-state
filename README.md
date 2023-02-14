@@ -27,7 +27,7 @@ const update = debounce((e: Event) => {
 
 <template>
   <div class="editor">
-    <textarea class="input" :value="state.input" @input="state.update"></textarea>
+    <textarea class="input" :value="state.input" @input="update"></textarea>
     <div class="output" v-html="state.output"></div>
   </div>
 </template>

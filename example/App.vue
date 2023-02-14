@@ -6,7 +6,7 @@ A simple markdown editor.
 <script setup lang="ts">
 import { marked } from 'marked'
 import { debounce } from 'lodash-es'
-import { defineState } from '../lib/defineState'
+import { defineState } from '../src/defineState'
 
 const state = defineState({
   input: '# hello',
@@ -14,18 +14,17 @@ const state = defineState({
   get output() {
     return marked(this.input)
   },
-
-  update(e: Event) {
-    this.input = (e.target as HTMLInputElement).value
-  }
 })
 
-state.update = debounce(state.update, 100)
+
+const update = debounce((e: Event) => {
+  state.input = (e.target as HTMLInputElement).value
+}, 100)
 </script>
 
 <template>
   <div class="editor">
-    <textarea class="input" :value="state.input" @input="state.update"></textarea>
+    <textarea class="input" :value="state.input" @input="update"></textarea>
     <div class="output" v-html="state.output"></div>
   </div>
 </template>
