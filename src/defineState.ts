@@ -1,4 +1,4 @@
-import { computed, reactive } from "vue"
+import { computed, reactive, UnwrapNestedRefs } from "vue"
 
 /**
  * A convenient wrapper for Vue's `reactive()`. 
@@ -7,7 +7,7 @@ import { computed, reactive } from "vue"
  * - Makes all getters into computed values
  * - Binds "this" for all non-getter functions
  */
-export function defineState<T extends object>(obj: T) {
+export function defineState<T extends object>(obj: T): UnwrapNestedRefs<T> {
   const reactiveObj = reactive(obj)
 
   // Make all getters into computed values
