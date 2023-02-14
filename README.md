@@ -1,4 +1,4 @@
-# vue-define-state
+# vue-define-state [![latest release](https://img.shields.io/npm/v/vue-define-state.svg)](https://www.npmjs.com/package/vue-define-state)
 
 An alternative way to define local component state with the Vue 3 composition API. This package exports a `defineState` function which wraps Vue's [reactive](https://vuejs.org/guide/essentials/reactivity-fundamentals.html#declaring-reactive-state), adding two features:
 
@@ -40,6 +40,6 @@ state.update = debounce(state.update, 100)
 
 ## Why?
 
-I used [vue-class-component](https://class-component.vuejs.org/) extensively in Vue 2; `defineState` made it quite easy to upgrade old code to the Vue 3 composition API.
+If you used [vue-class-component](https://class-component.vuejs.org/) extensively in Vue 2, `defineState` makes it easier to upgrade old code to the Vue 3 composition API.
 
 I personally find this syntax a little more succinct and easier to work with than manually calling `ref` and `computed`, especially when working with larger components. It's similar to [useLocalObservable](https://mobx.js.org/react-integration.html#using-local-observable-state-in-observer-components) from Mobx.
