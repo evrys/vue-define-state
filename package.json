@@ -7,6 +7,7 @@
   ],
   "main": "./dist/vue-define-state.umd.cjs",
   "module": "./dist/vue-define-state.js",
+  "types": "dist/vue-define-state.d.ts",
   "exports": {
     ".": {
       "import": "./dist/vue-define-state.js",
