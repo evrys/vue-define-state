@@ -16,7 +16,7 @@ const state = defineState({
   },
 
   update(e: Event) {
-    state.input = (e.target as HTMLInputElement).value
+    this.input = (e.target as HTMLInputElement).value
   }
 })
 
