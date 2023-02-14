@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [vue(), dts()],
   build: {
     lib: {
-      entry: resolve(__dirname, './lib/defineState.ts'),
+      entry: resolve(__dirname, './src/defineState.ts'),
       name: 'vue-define-state',
       fileName: 'vue-define-state',
     },
