@@ -1,9 +1,6 @@
 # vue-define-state [![latest release](https://img.shields.io/npm/v/vue-define-state.svg)](https://www.npmjs.com/package/vue-define-state)
 
-An alternative way to define local component state with the Vue 3 composition API. This package exports a `defineState` function which wraps Vue's [reactive](https://vuejs.org/guide/essentials/reactivity-fundamentals.html#declaring-reactive-state), adding two features:
-
- - Makes all getters into computed values
- - Binds "this" for all non-getter functions
+An alternative way to define local component state with the Vue 3 composition API. This package exports a `defineState` function which wraps Vue's [reactive](https://vuejs.org/guide/essentials/reactivity-fundamentals.html#declaring-reactive-state), turning all provided `get` methods into [computed properties](https://vuejs.org/guide/essentials/computed.html).
 
 ## Example
 
@@ -20,14 +17,12 @@ const state = defineState({
 
   get output() {
     return marked(this.input)
-  },
-
-  update(e: Event) {
-    this.input = (e.target as HTMLInputElement).value
   }
 })
 
-state.update = debounce(state.update, 100)
+const update = debounce((e: Event) => {
+  state.input = (e.target as HTMLInputElement).value
+}, 100)
 </script>
 
 <template>

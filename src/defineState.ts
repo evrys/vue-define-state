@@ -2,10 +2,8 @@ import { computed, reactive, UnwrapNestedRefs } from "vue"
 
 /**
  * A convenient wrapper for Vue's `reactive()`. 
- * Creates a reactive copy of the original object, and also:
- *
- * - Makes all getters into computed values
- * - Binds "this" for all non-getter functions
+ * Creates a reactive copy of the original object, and
+ * also converts all getters into computed values.
  */
 export function defineState<T extends object>(obj: T): UnwrapNestedRefs<T> {
   const reactiveObj = reactive(obj)
@@ -22,16 +20,6 @@ export function defineState<T extends object>(obj: T): UnwrapNestedRefs<T> {
     }
   }
 
-  // Bind "this" for all non-getter functions
-  // eslint-disable-next-line guard-for-in
-  for (const key in reactiveObj) {
-    const desc = Object.getOwnPropertyDescriptor(reactiveObj, key)
-    if (desc && !desc.get && typeof desc.value === 'function') {
-      Object.defineProperty(obj, key, {
-        value: desc.value.bind(reactiveObj)
-      })
-    }
-  }
 
   return reactiveObj
 }
