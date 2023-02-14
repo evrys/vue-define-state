@@ -5,11 +5,21 @@ import dts from 'vite-plugin-dts'
 
 // https://vitejs.dev/guide/build.html#library-mode
 export default defineConfig({
-  plugins: [vue(), dts()],
+  plugins: [
+    vue(),
+    dts({
+      beforeWriteFile: (filePath, content) => {
+        return {
+          filePath: 'dist/vue-define-state.d.ts',
+        }
+      }
+    })
+  ],
   build: {
+    sourcemap: true,
     lib: {
       entry: resolve(__dirname, './src/defineState.ts'),
-      name: 'vue-define-state',
+      name: 'VueDefineState',
       fileName: 'vue-define-state',
     },
     rollupOptions: {
