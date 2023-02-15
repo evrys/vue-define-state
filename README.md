@@ -1,6 +1,6 @@
 # vue-define-state [![latest release](https://img.shields.io/npm/v/vue-define-state.svg)](https://www.npmjs.com/package/vue-define-state)
 
-An alternative way to define local component state with the Vue 3 composition API. This package exports a `defineState` function which wraps Vue's [reactive](https://vuejs.org/guide/essentials/reactivity-fundamentals.html#declaring-reactive-state), turning all provided `get` methods into [computed properties](https://vuejs.org/guide/essentials/computed.html).
+This package exports a `defineState` function which wraps Vue's [reactive](https://vuejs.org/guide/essentials/reactivity-fundamentals.html#declaring-reactive-state), turning all provided `get` methods into [computed properties](https://vuejs.org/guide/essentials/computed.html).
 
 ## Example
 
