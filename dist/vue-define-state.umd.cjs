@@ -1,0 +1,2 @@
+(function(e,t){typeof exports=="object"&&typeof module<"u"?t(exports,require("vue")):typeof define=="function"&&define.amd?define(["exports","vue"],t):(e=typeof globalThis<"u"?globalThis:e||self,t(e.VueDefineState={},e.Vue))})(this,function(e,t){"use strict";function d(o){const n=t.reactive(o);for(const f in n){const i=Object.getOwnPropertyDescriptor(n,f);i&&i.get&&Object.defineProperty(o,f,{value:t.computed(i.get.bind(n))})}return n}e.defineState=d,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})});
+//# sourceMappingURL=vue-define-state.umd.cjs.map
